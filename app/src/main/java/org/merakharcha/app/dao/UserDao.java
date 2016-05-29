@@ -4,12 +4,12 @@ import java.util.List;
 
 import org.merakharcha.app.model.User;
 
-public abstract class UserDao {
+public interface UserDao {
 	
-	public abstract int addUser(User user);
-	public abstract User getUserByUserId(int id);
-	public abstract List<User> getAllUsers();
-	public abstract boolean updateUser(User user);
-	public abstract boolean deleteUser(User user);
+	public int addUser(User user);
+	public User getUserByUserId(int id);
+	public List<User> getAllUsers();
+	public boolean updateUser(User user);
+	public boolean deleteUser(User user);
 	
 }
