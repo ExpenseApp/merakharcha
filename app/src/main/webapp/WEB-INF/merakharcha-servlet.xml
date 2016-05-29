@@ -11,14 +11,21 @@
    <context:annotation-config />
    <context:component-scan base-package="org.merakharcha.app" />
 	
-   <bean class="org.merakharcha.app.dao.AbstractDao" abstract="true">
-   		<property name="dataSource">
-   			<bean class="org.apache.commons.dbcp2.BasicDataSource">
+  <bean id="simpleTemplate" class="org.springframework.jdbc.core.simple.SimpleJdbcTemplate">
+  	<constructor-arg name="dataSource" ref="dataSource" />
+  </bean>	
+	
+  <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
    				<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
    				<property name="url" value="jdbc:mysql://localhost:3306/merakharcha"></property>
    				<property name="username" value="root"></property>
-   				<property name="password" value="root"></property>
-   			</bean>
+   				<property name="password" value="vaibhav"></property>
+   </bean>
+	
+   <bean class="org.merakharcha.app.dao.impl.UserDaoImpl">
+   		<property name="dataSource" ref="dataSource">
+   			
+   			
    		</property>
    </bean>	
    

@@ -4,10 +4,38 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.sql.DataSource;
+
 import org.merakharcha.app.dao.UserDao;
 import org.merakharcha.app.model.User;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
+import org.springframework.stereotype.Component;
 
 public class UserDaoImpl extends UserDao{
+  
+	private DataSource dataSource;
+	
+	private SimpleJdbcTemplate template;
+	
+	public DataSource getDataSource() {
+		return dataSource;
+	}
+
+	public void setDataSource(DataSource dataSource) {
+		this.template = new SimpleJdbcTemplate(dataSource);
+		this.dataSource = dataSource;
+	}
+	
+
+	public SimpleJdbcTemplate getTemplate() {
+		return template;
+	}
+
+	public void setTemplate(SimpleJdbcTemplate template) {
+		this.template = template;
+	}
 
 	@Override
 	public int addUser(User user) {
@@ -16,7 +44,8 @@ public class UserDaoImpl extends UserDao{
 		map.put("USERNAME", user.getUserName());
 		map.put("PASSWORD", user.getPassword());
 		map.put("EMAIL", user.getEmail());
-		int userId = this.getSimpleJdbcTemplate().queryForObject(sql, Integer.class, map);
+		int userId = this.template.queryForObject(sql, Integer.class, map);
+		System.out.println("fetched userId "+userId);
 		return 0;
 	}
 
