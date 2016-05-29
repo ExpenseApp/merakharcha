@@ -1,8 +1,8 @@
 package org.merakharcha.app.dao;
 
 
-import org.springframework.jdbc.core.simple.SimpleJdbcDaoSupport;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcDaoSupport;
 
-public abstract class AbstractDao extends SimpleJdbcDaoSupport{
-		//TODO: Autowiring of Datasource
+public abstract class AbstractDao extends NamedParameterJdbcDaoSupport{
+		
 }
