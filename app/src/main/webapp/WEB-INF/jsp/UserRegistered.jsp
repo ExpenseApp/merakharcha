@@ -7,6 +7,6 @@
 <title>User Registered</title>
 </head>
 <body>
-	Welcome user ${userName}
+	Welcome user ${userId}
 </body>
 </html>

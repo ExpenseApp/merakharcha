@@ -19,7 +19,8 @@ public class AppController {
 	@RequestMapping(method=RequestMethod.POST, value="/register")
 	public String showHomePage(@ModelAttribute("SpringWeb")User user, ModelMap model){
 		System.out.println(user);
-		model.addAttribute("userName", user.getUserName());
+		int userId = userSupport.register(user);
+		model.addAttribute("userId", userId);
 		return "UserRegistered";
 	} 
 	

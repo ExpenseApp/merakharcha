@@ -4,7 +4,7 @@ import org.merakharcha.app.model.User;
 
 public interface IUserInterface {
 	
-	public User register(User user);
+	public int register(User user);
 	
 	public boolean login(User user);
 	
