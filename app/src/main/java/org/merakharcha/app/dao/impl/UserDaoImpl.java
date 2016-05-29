@@ -11,16 +11,16 @@ import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 public class UserDaoImpl extends AbstractDao implements UserDao{
 
 	public int addUser(User user) {
-		String sql = "INSERT INTO USER(USERNAME, PASSWORD, EMAIL) VALUES(:USERNAME, :PASSWORD, :EMAIL)";	
+		String sql = NEW_USER_ADD;	
 		SqlParameterSource paramSource = getNewUserSQLParameterSource(user);
 		this.getNamedParameterJdbcTemplate().update(sql, paramSource);
 		return 0;
 	}
 	
 	private SqlParameterSource getNewUserSQLParameterSource(User user){
-		SqlParameterSource sqlParamSource = new MapSqlParameterSource("USERNAME", user.getUserName()).
-				  addValue("PASSWORD", user.getPassword()).
-				  addValue("EMAIL", user.getEmail());
+		SqlParameterSource sqlParamSource = new MapSqlParameterSource(FIELD_USERNAME, user.getUserName()).
+				  addValue(FIELD_PASSWORD, user.getPassword()).
+				  addValue(FIELD_EMAIL, user.getEmail());
 		return sqlParamSource;
 	}
 
