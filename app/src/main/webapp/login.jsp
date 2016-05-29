@@ -108,14 +108,13 @@ body {
 <body>
 	<div class="login-page">
   <div class="form">
-<FORM action="/app/register" method="post" class="login-form" >
+<FORM action="/app/login" method="post" class="login-form" >
 	Name <INPUT type="text" name="userName" />
-	Email <INPUT type="text" name="email" />
-	Password <INPUT type="password" name="password" />
-	<button>Register</button>
-	
+	Password <INPUT type="password" name="password"/>
+	<button>Login</button>
 </FORM>
-
-</div></div>
+</div>
+</div>
+<a href="/app/login">Already Registered Login</a>
 </body>
 </html>
