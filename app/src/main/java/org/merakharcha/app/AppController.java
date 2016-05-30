@@ -2,7 +2,6 @@ package org.merakharcha.app;
 
 
 import org.merakharcha.app.api.IUserInterface;
-import org.merakharcha.app.api.impl.UserInterfaceImpl;
 import org.merakharcha.app.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
