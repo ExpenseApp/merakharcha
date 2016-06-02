@@ -1,9 +1,12 @@
 package org.merakharcha.app.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class User {
 	
 	private int userId;
 	private String userName;
+	@JsonIgnore
 	private String password;
 	private String email;
 	
@@ -34,7 +37,7 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", userName=" + userName
-				+ ", password=" + password + ", email=" + email + "]";
+				+ ", email=" + email + "]";
 	}
 
 }

@@ -50,7 +50,11 @@ public class UserDaoImpl extends AbstractDao implements UserDao{
 	public User getUserByUserId(int id) {
 		SqlParameterSource paramSource = new MapSqlParameterSource(FIELD_USER_ID,id);		
 		List<User> user = (List<User>) this.getNamedParameterJdbcTemplate().query(FETCH_USER_BY_USER_ID, paramSource, new UserRowMapper());
-		return user.get(0);		
+		if(user!=null && !user.isEmpty()){
+			return user.get(0);		
+		}else{
+			return null;
+		}
 	}
 	
 	/***
@@ -58,8 +62,12 @@ public class UserDaoImpl extends AbstractDao implements UserDao{
 	 */
 	public User getUserByUserName(String userName) {
 		SqlParameterSource paramSource = new MapSqlParameterSource(FIELD_USERNAME,userName);		
-		User user = (User) this.getNamedParameterJdbcTemplate().query(FETCH_USER_BY_USERNAME, paramSource, new UserRowMapper());
-		return user;
+		List<User> user = (List<User>) this.getNamedParameterJdbcTemplate().query(FETCH_USER_BY_USERNAME, paramSource, new UserRowMapper());
+		if(user!=null && !user.isEmpty()){
+			return user.get(0);		
+		}else{
+			return null;
+		}
 	}
 
 	/***
